@@ -63,6 +63,8 @@ export class TariffListViewComponent
     'downSpeed',
     'benefits',
     'tariffValue',
+    'monthlyCancellable',
+    'goTariff',
   ];
   public dataSource!: MatTableDataSource<Tariff, MatTableDataSourcePaginator>;
   public isLoadingResults: boolean = true;
@@ -151,6 +153,7 @@ export class TariffListViewComponent
             'upSpeed',
             'downSpeed',
             'tariffValue',
+            'goTariff',
           ];
           this.showProgressBars = false;
         } else if (
@@ -163,6 +166,8 @@ export class TariffListViewComponent
             'downSpeed',
             'benefits',
             'tariffValue',
+            'monthlyCancellable',
+            'goTariff',
           ];
           this.showProgressBars = true;
         }
@@ -219,6 +224,10 @@ export class TariffListViewComponent
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public getMonthlyCancellable(row: Tariff): boolean {
+    return row.details.contractTerms.monthlyCancellable;
   }
 
   /**

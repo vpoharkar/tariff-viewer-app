@@ -58,7 +58,6 @@ export function createCityValueValidator(): ValidatorFn {
   styleUrls: ['./comparison-form.component.scss'],
 })
 export class ComparisonFormComponent implements OnInit {
-
   /**
    *
    * Public members
@@ -71,11 +70,18 @@ export class ComparisonFormComponent implements OnInit {
   public countryFormControl = new FormControl('', [Validators.required]);
   public cityFormControl = new FormControl('', [Validators.required]);
   public matcher = new MyErrorStateMatcher();
+  public lastComparisonTimeStamp!: Date;
 
-  constructor(
-    private readonly apiService: ApiService) {}
+  constructor(private readonly apiService: ApiService) {}
 
   ngOnInit(): void {
+    const lastComparison = localStorage.getItem('lastComparisonTimestamp');
+    if (lastComparison !== null) {
+      this.lastComparisonTimeStamp = new Date(
+        Number(localStorage.getItem('lastComparisonTimestamp'))
+      );
+    }
+
     this.$countries = this.apiService.getCountries();
     this.$regions = this.apiService.getRegionDetails();
     this.dataError = { country: false, city: false };
@@ -107,6 +113,15 @@ export class ComparisonFormComponent implements OnInit {
             //   'maxDownSpeedLimit',
             //   region.maxDownSpeedLimit.toString()
             // );
+
+            console.log('date: ', this.lastComparisonTimeStamp);
+            localStorage.setItem(
+              'lastComparisonTimestamp',
+              Date.now().toString()
+            );
+            this.lastComparisonTimeStamp = new Date(
+              Number(localStorage.getItem('lastComparisonTimestamp'))
+            );
             this.selectedRegion = region;
             this.showResultTable = true;
             this.dataError = { country: false, city: false };
@@ -121,7 +136,7 @@ export class ComparisonFormComponent implements OnInit {
    * country => Germany
    * city => Heidelberg, Mannheim
    * following methods checks the data valiation for above criteria
-   * 
+   *
    * @private
    * @param {string} country
    * @param {string} city

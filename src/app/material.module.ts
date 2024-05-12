@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
     MatTabsModule,
     LayoutModule,
     MatListModule,
+    MatDialogModule,
   ],
   exports: [
     MatTableModule,
@@ -49,6 +51,7 @@ import { MatListModule } from '@angular/material/list';
     MatTabsModule,
     LayoutModule,
     MatListModule,
+    MatDialogModule,
   ],
   declarations: [],
   providers: [],

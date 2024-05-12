@@ -3,7 +3,12 @@
   <mat-card-header>
     <div mat-card-avatar class="logo-image"></div>
     <mat-card-subtitle>Form View</mat-card-subtitle>
-    <mat-card-title>you last comparizon was on 11.05.2024</mat-card-title>
+    <mat-card-title *ngIf="lastComparisonTimeStamp"
+      >you last comparizon was on
+      {{
+        lastComparisonTimeStamp | date : "MMM d, y, h:mm:ss a"
+      }}</mat-card-title
+    >
   </mat-card-header>
   <mat-card-content>
     <form class="comparison-form">
@@ -55,7 +60,12 @@
       <mat-icon>delete</mat-icon>
       Clear Selection
     </button>
-    <button mat-flat-button color="primary" (click)="showResults(regions)" [disabled]="countryFormControl.invalid || cityFormControl.invalid">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="showResults(regions)"
+      [disabled]="countryFormControl.invalid || cityFormControl.invalid"
+    >
       Show Tariffs
     </button>
   </mat-card-actions>
