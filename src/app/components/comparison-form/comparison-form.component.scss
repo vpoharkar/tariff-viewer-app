@@ -1,0 +1,52 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$primary: mat.define-palette(mat.$indigo-palette, 500);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn: mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($theme);
+
+h2 {
+  padding: 15px;
+}
+
+.internet-comparison {
+  max-width: 100%;
+  .logo-image {
+    background-image: url("https://picsum.photos/200/300");
+    background-size: cover;
+  }
+
+  .comparison-form {
+    min-width: 150px;
+    width: 100%;
+
+    .control-full-width {
+      width: 100%;
+    }
+
+    .data-error {
+      color: mat.get-color-from-palette($warn, 300);
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

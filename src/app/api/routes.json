@@ -1,0 +1,5 @@
+{ 
+  "/api/countries": "/countries",
+  "/api/regions": "/regions",
+  "/api/tariffs/:regionReferenceId": "/tariffs"
+}

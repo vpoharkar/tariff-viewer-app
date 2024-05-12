@@ -1,0 +1,69 @@
+<h2>Internet Comparison</h2>
+<mat-card class="internet-comparison">
+  <mat-card-header>
+    <div mat-card-avatar class="logo-image"></div>
+    <mat-card-subtitle>Form View</mat-card-subtitle>
+    <mat-card-title>you last comparizon was on 11.05.2024</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="comparison-form">
+      <mat-form-field
+        class="control-full-width"
+        *ngIf="$countries | async as countries"
+      >
+        <mat-label>Select Cointry</mat-label>
+        <mat-select
+          [formControl]="countryFormControl"
+          [errorStateMatcher]="matcher"
+        >
+          <mat-option
+            *ngFor="let country of countries"
+            [value]="country.name"
+            >{{ country.name }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="countryFormControl.hasError('required')"
+          >Country is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+      <p class="data-error" *ngIf="dataError.country">
+        Country chossen <strong>has no region data.</strong>Try Germany
+      </p>
+
+      <mat-form-field class="control-full-width">
+        <mat-label>City</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="cityFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. Germany"
+        />
+
+        <mat-error *ngIf="cityFormControl.hasError('required')"
+          >City is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+      <p class="data-error" *ngIf="dataError.city">
+        City is <strong>not listed in database.</strong>Try Heidelberg or
+        Mannheim
+      </p>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="actions" *ngIf="$regions | async as regions">
+    <button mat-raised-button color="warn" (click)="clearSelection()">
+      <mat-icon>delete</mat-icon>
+      Clear Selection
+    </button>
+    <button mat-flat-button color="primary" (click)="showResults(regions)" [disabled]="countryFormControl.invalid || cityFormControl.invalid">
+      Show Tariffs
+    </button>
+  </mat-card-actions>
+  <mat-card-footer> </mat-card-footer>
+</mat-card>
+
+<mat-card *ngIf="showResultTable && selectedRegion">
+  <mat-card-content>
+    <app-tariff-list-view [region]="selectedRegion"></app-tariff-list-view>
+  </mat-card-content>
+</mat-card>

@@ -1,14 +1,55 @@
 # TariffApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+A simple resposive application to view tariff Data in a easliy accessible list. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+
+## Technical Details
+
+Face API creater: [json-server](https://github.com/typicode/json-server);
+Framework used: [Angular CLI](https://github.com/angular/angular-cli);
+Design responsive component with: [angular-material](https://material.angular.io/);
+concurrent vommand line operation with: [concurrently](https://github.com/open-cli-tools/concurrently);
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start-app` which boots up both fake-api-server and angular dev server. 
+UI: Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+API(Optional): If you wish to view raw data navigate to following exposed routes:
+**Routes**
 
-## Code scaffolding
+- Resource waw routes
+  - http://localhost:3000/countries
+  - http://localhost:3000/regions
+  - http://localhost:3000/tariffs
+- API routes
+  - /api/countries -> /countries
+  - /api/regions -> /regions
+  - /api/tariffs/:regionReferenceId -> /tariffs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  Cheers! you are up with application running.
+
+
+## Usage
+The Application consists of two parts: Internet comparison form and tariff results
+
+### Steps
+
+#### Provide Comparison form data
+1. Country => Currently supported => `Germany`
+2. City =>ntly suported => `Heidelberg`, `Mannheim`
+> **Note**
+> The `form-fields` are equiped with error messages `ShowShow Tariffs` will only enable when form data is valid.
+
+#### Show Tariffs
+1. Tariffs with selected data is visible.
+2. User can modify data in `internet-comparison-form` to view changes in list instantly.
+2. Following fields can be sorted => `Up Speed`, `Down Speed`, `Tariff Value`.
+3. **Global Filter**: Filters all columns with specified value.
+4. **Custom Filter**: Following fields can be filtered  => `Name`,`Up Speed`, `Down Speed`, `Tariff Value`.
+5. On Smaller screens => handset `benefits` columns is hidden. Will only be available on larger screens.
+6. On Smaller screens => handset `Up Speed`, `Down Speed` columnare shown as numeric value. Whereas on larger screens they are shown as progress bar with `currentSpee` and `maxSpeedLimit` values
+> **Note**
+> Only exact match in filter renders data.
 
 ## Build
 
@@ -24,4 +65,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+

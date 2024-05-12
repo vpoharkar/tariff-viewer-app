@@ -1,0 +1,173 @@
+{
+    "countries": [
+        {
+            "name": "Germany",
+            "code": "DE"
+          },  {
+            "name": "France",
+            "code": "FR"
+          }, {
+            "name": "Austria",
+            "code": "AT"
+          }, {
+            "name": "Czech Republic",
+            "code": "CZ"
+          }, {
+            "name": "Netherlands",
+            "code": "NL"
+          }, {
+            "name": "Belgium",
+            "code": "BE"
+          }, {
+            "name": "Luxembourg",
+            "code": "LU"
+          }
+    ],
+    "regions": [
+        {
+            "country": "Germany",
+            "city": "heidelberg",
+            "maxUpSpeedLimit": 100,
+            "maxDownSpeedLimit": 1000
+        }, {
+            "country": "Germany",
+            "city": "mannheim",
+            "maxUpSpeedLimit": 100,
+            "maxDownSpeedLimit": 500
+        }
+    ],
+    "tariffs": [
+        {
+            "id": "RE-1",
+            "regionReferenceId": "heidelberg",
+            "tariffs": [
+                {
+                    "id":  "5d796c73-669d-4809-a027-343db0580e0a",
+                    "name": "One-Net",
+                    "upSpeed": 50,
+                    "downSpeed": 250,
+                    "tariffValue": 20.00,
+                    "benefits": [
+                        "One time payment gets first 5 months free",
+                        "Monthly carry forward remaining internet capacity"
+                    ],
+                    "details": {
+                        "payment": {
+                            "paymentType": "MONTHLY",
+                            "monthlyTariff": 20.00,
+                            "quarterlyTariff": 60.00,
+                            "oneTimeTariff": 480.00,
+                            "paymentBonus": [
+                                {
+                                    "paymentType": "ONE_TIME",
+                                    "bonusType": "FIRST_5_MONTHS_FREE",
+                                    "description": "One time payment gets first 5 months free"
+                                }
+                            ]
+                        },
+                        "contractTerms": {
+                            "manadatoryTenureInMonths": 24,
+                            "monthlyCancellable": false
+                        }
+                    }
+                }, {
+                    "id":  "9a069ceb-61b6-419c-a544-35890e8bc54b",
+                    "name": "Fast-Net",
+                    "upSpeed": 50,
+                    "downSpeed": 100,
+                    "tariffValue": 16.99,
+                    "benefits": ["One time payment gets a free router",
+                        "Monthly carry forward remaining internet capacity"
+                    ],
+                    "details": {
+                        "payment": {
+                            "paymentType": "MONTHLY",
+                            "monthlyTariff": 16.99,
+                            "quarterlyTariff": 50.97,
+                            "oneTimeTariff": 203.88,
+                            "paymentBonus": [
+                                {
+                                    "paymentType": "ONE_TIME",
+                                    "bonusType": "ROUTER_FREE",
+                                    "description": "One time payment gets a free router"
+                                }
+                            ]
+                        },
+                        "contractTerms": {
+                            "manadatoryTenureInMonths": 12,
+                            "monthlyCancellable": false
+                        }
+                    }
+                }, {
+                    "id":  "31b41c63-e4d5-4901-a74d-3d551d7c21c7",
+                    "name": "City-Cable",
+                    "upSpeed": 10,
+                    "downSpeed": 50,
+                    "tariffValue": 14.99,
+                    "benefits": ["Monthly cancellation possible",
+                        "Free 200$ virtual cash"
+                    ],
+                    "details": {
+                        "payment": {
+                            "paymentType": "MONTHLY",
+                            "monthlyTariff": 14.99,
+                            "quarterlyTariff": 44.97,
+                            "oneTimeTariff": null,
+                            "paymentBonus": [
+                                {
+                                    "paymentType": "VARIED",
+                                    "bonusType": "VIRTUAL_CASH",
+                                    "description": "Free 200$ virtual cash"
+                                }
+                            ]
+                        },
+                        "contractTerms": {
+                            "manadatoryTenureInMonths": 0,
+                            "monthlyCancellable": true
+                        }
+                    }
+                }
+            ]
+        } , {
+            "id": "RE-2",
+            "regionReferenceId": "mannheim",
+            "tariffs": [
+                {
+                    "id":  "b864b6ab-6a6a-428a-9f3b-0615a8fcd6a7",
+                    "name": "One-Net",
+                    "upSpeed": 50,
+                    "downSpeed": 500,
+                    "tariffValue": 29.00,
+                    "benefits": [
+                        "One time payment gets a free router",
+                        "Monthly carry forward remaining internet capacity",
+                        "Free 200$ virtual cash"
+                    ],
+                    "details": {
+                        "payment": {
+                            "paymentType": "MONTHLY",
+                            "monthlyTariff": 29.00,
+                            "quarterlyTariff": 87.00,
+                            "oneTimeTariff": 696.00,
+                            "paymentBonus": [
+                                {
+                                    "paymentType": "ONE_TIME",
+                                    "bonusType": "ROUTER_FREE",
+                                    "description": "One time payment gets a free router"
+                                }, {
+                                    "paymentType": "VARIED",
+                                    "bonusType": "VIRTUAL_CASH",
+                                    "description": "Free 200$ virtual cash"
+                                }
+                            ]
+                        },
+                        "contractTerms": {
+                            "manadatoryTenureInMonths": 24,
+                            "monthlyCancellable": false
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
