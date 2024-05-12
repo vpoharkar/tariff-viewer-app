@@ -1,23 +1,24 @@
-# TariffApp
+# Tariff Viewer Application
 
-A simple resposive application to view tariff Data in a easliy accessible list. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+A simple responsive application to view tariff Data in a easliy accessible list. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
 ## Technical Details
 
-Face API creater: [json-server](https://github.com/typicode/json-server);
-Framework used: [Angular CLI](https://github.com/angular/angular-cli);
-Design responsive component with: [angular-material](https://material.angular.io/);
-concurrent vommand line operation with: [concurrently](https://github.com/open-cli-tools/concurrently);
+- Fake API creater: [json-server](https://github.com/typicode/json-server);
+- Framework used: [Angular CLI](https://github.com/angular/angular-cli);
+- Design responsive component with: [angular-material](https://material.angular.io/);
+- concurrent command line operation with: [concurrently](https://github.com/open-cli-tools/concurrently);
 
 
 ## Development server
 
-Run `npm run start-app` which boots up both fake-api-server and angular dev server. 
-UI: Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-API(Optional): If you wish to view raw data navigate to following exposed routes:
-**Routes**
+- Run `npm run start-app` which boots up both **fake-api-server** and **angular dev server**. 
+- UI: Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- API(Optional): If you wish to view raw data navigate to following exposed routes:
 
-- Resource waw routes
+**Routes:**
+
+- Resource raw routes
   - http://localhost:3000/countries
   - http://localhost:3000/regions
   - http://localhost:3000/tariffs
@@ -30,24 +31,24 @@ API(Optional): If you wish to view raw data navigate to following exposed routes
 
 
 ## Usage
-The Application consists of two parts: Internet comparison form and tariff results
+The Application consists of two parts: **Internet comparison form** and **Tariff List**
 
 ### Steps
 
 #### Provide Comparison form data
 1. Country => Currently supported => `Germany`
-2. City =>ntly suported => `Heidelberg`, `Mannheim`
+2. City => Currently suported => `Heidelberg`, `Mannheim`
 > **Note**
-> The `form-fields` are equiped with error messages `ShowShow Tariffs` will only enable when form data is valid.
+> The `form-fields` are equiped with error messages `Show Tariffs` will only enable when form data is valid.
 
 #### Show Tariffs
-1. Tariffs with selected data is visible.
+1. Tariffs with user selected(*region specific*) is visible.
 2. User can modify data in `internet-comparison-form` to view changes in list instantly.
 2. Following fields can be sorted => `Up Speed`, `Down Speed`, `Tariff Value`.
 3. **Global Filter**: Filters all columns with specified value.
 4. **Custom Filter**: Following fields can be filtered  => `Name`,`Up Speed`, `Down Speed`, `Tariff Value`.
-5. On Smaller screens => handset `benefits` columns is hidden. Will only be available on larger screens.
-6. On Smaller screens => handset `Up Speed`, `Down Speed` columnare shown as numeric value. Whereas on larger screens they are shown as progress bar with `currentSpee` and `maxSpeedLimit` values
+5. On Smaller screens => handset-screen `benefits` columns is hidden. Will only be available on larger screens.
+6. On Smaller screens => handset-screen `Up Speed`, `Down Speed` columnare shown as numeric value. Whereas on larger screens they are shown as progress bar with `currentSpeed` and `maxSpeedLimitPerSelectedArea` values.
 > **Note**
 > Only exact match in filter renders data.
 
