@@ -54,106 +54,114 @@
       </mat-list-item>
     </mat-list>
 
-    <table mat-table [dataSource]="dataSource" class="example-table" matSort>
-      <!-- Benefits Column -->
-      <ng-container matColumnDef="benefits">
-        <th mat-header-cell *matHeaderCellDef>Benefits</th>
-        <td mat-cell *matCellDef="let row">{{ row.benefits }}</td>
-      </ng-container>
+    <div class="tariff-table">
+      <table mat-table [dataSource]="dataSource" class="example-table" matSort>
+        <!-- Benefits Column -->
+        <ng-container matColumnDef="benefits">
+          <th mat-header-cell *matHeaderCellDef>Benefits</th>
+          <td mat-cell *matCellDef="let row">{{ row.benefits }}</td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+        </ng-container>
 
-      <!-- Tariff value Column -->
-      <ng-container matColumnDef="tariffValue">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          <p>tariff Value</p>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <strong>{{ row.tariffValue }}</strong>
-        </td>
-      </ng-container>
+        <!-- Tariff value Column -->
+        <ng-container matColumnDef="tariffValue">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            <p>tariff Value</p>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <strong>{{ row.tariffValue }}</strong>
+          </td>
+        </ng-container>
 
-      <!-- UpSpeed Column -->
-      <ng-container matColumnDef="upSpeed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          Up Speed
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <!-- <mat-progress-bar mode="determinate" [value]="row.upSpeed" ></mat-progress-bar> -->
-          <section class="progress-section">
-            <mat-progress-bar
-              *ngIf="showProgressBars"
-              class="up-speed"
-              [color]="'warn'"
-              [mode]="'determinate'"
-              [value]="row.upSpeed"
-              [bufferValue]="100"
+        <!-- UpSpeed Column -->
+        <ng-container matColumnDef="upSpeed">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Up Speed
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <!-- <mat-progress-bar mode="determinate" [value]="row.upSpeed" ></mat-progress-bar> -->
+            <section class="progress-section">
+              <mat-progress-bar
+                *ngIf="showProgressBars"
+                class="up-speed"
+                [color]="'warn'"
+                [mode]="'determinate'"
+                [value]="row.upSpeed"
+                [bufferValue]="100"
+              >
+              </mat-progress-bar>
+              <div *ngIf="showProgressBars" class="progress-text">
+                {{ row.upSpeed }}Mbps
+              </div>
+              <span *ngIf="!showProgressBars">{{ row.upSpeed }}</span>
+              <p *ngIf="showProgressBars">{{ region.maxUpSpeedLimit }}</p>
+            </section>
+          </td>
+        </ng-container>
+
+        <!-- DownSpeed Column -->
+        <ng-container matColumnDef="downSpeed">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Down Speed
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <section class="progress-section">
+              <mat-progress-bar
+                *ngIf="showProgressBars"
+                class="up-speed"
+                [color]="'primary'"
+                [mode]="'determinate'"
+                [value]="row.upSpeed"
+                [bufferValue]="100"
+              >
+              </mat-progress-bar>
+              <div *ngIf="showProgressBars" class="progress-text">
+                {{ row.downSpeed }}Mbps
+              </div>
+              <p *ngIf="showProgressBars">{{ region.maxDownSpeedLimit }}</p>
+              <span *ngIf="!showProgressBars">{{ row.downSpeed }}</span>
+            </section>
+          </td>
+        </ng-container>
+
+        <!-- Monthly cancelable Column -->
+        <ng-container matColumnDef="monthlyCancellable">
+          <th mat-header-cell *matHeaderCellDef>Monthly Cancellable</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="check-success" *ngIf="getMonthlyCancellable(row)"
+              >check_circle</mat-icon
             >
-            </mat-progress-bar>
-            <div *ngIf="showProgressBars" class="progress-text">
-              {{ row.upSpeed }}Mbps
-            </div>
-            <span *ngIf="!showProgressBars">{{ row.upSpeed }}</span>
-            <p *ngIf="showProgressBars">{{ region.maxUpSpeedLimit }}</p>
-          </section>
-        </td>
-      </ng-container>
-
-      <!-- DownSpeed Column -->
-      <ng-container matColumnDef="downSpeed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          Down Speed
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <section class="progress-section">
-            <mat-progress-bar
-              *ngIf="showProgressBars"
-              class="up-speed"
-              [color]="'primary'"
-              [mode]="'determinate'"
-              [value]="row.upSpeed"
-              [bufferValue]="100"
+            <mat-icon
+              class="check-unavailable"
+              *ngIf="!getMonthlyCancellable(row)"
+              >cancel</mat-icon
             >
-            </mat-progress-bar>
-            <div *ngIf="showProgressBars" class="progress-text">
-              {{ row.downSpeed }}Mbps
-            </div>
-            <p *ngIf="showProgressBars">{{ region.maxDownSpeedLimit }}</p>
-            <span *ngIf="!showProgressBars">{{ row.downSpeed }}</span>
-          </section>
-        </td>
-      </ng-container>
+          </td>
+        </ng-container>
 
-      <!-- Monthly cancelable Column -->
-      <ng-container matColumnDef="monthlyCancellable">
-        <th mat-header-cell *matHeaderCellDef>Monthly Cancellable</th>
-        <td mat-cell *matCellDef="let row">
-          <mat-icon class="check-success" *ngIf="getMonthlyCancellable(row)"
-            >check_circle</mat-icon
-          >
-          <mat-icon
-            class="check-unavailable"
-            *ngIf="!getMonthlyCancellable(row)"
-            >cancel</mat-icon
-          >
-        </td>
-      </ng-container>
+        <!-- Go to tariff Column -->
+        <ng-container matColumnDef="goTariff">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <button
+              mat-flat-button
+              class="to-tariff"
+              (click)="goTariffDialog(row)"
+            >
+              Go
+            </button>
+          </td>
+        </ng-container>
 
-      <!-- Go to tariff Column -->
-      <ng-container matColumnDef="goTariff">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
-          <button mat-flat-button class="to-tariff">Go</button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </div>
 
   <mat-paginator

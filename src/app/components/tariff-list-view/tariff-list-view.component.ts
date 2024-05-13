@@ -40,6 +40,8 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog-component.component';
 
 @Component({
   selector: 'app-tariff-list-view',
@@ -98,7 +100,8 @@ export class TariffListViewComponent
 
   constructor(
     private readonly apiService: ApiService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private dialog: MatDialog
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -251,6 +254,17 @@ export class TariffListViewComponent
       return true;
     };
     return filterFunction;
+  }
+
+  goTariffDialog(row: Tariff) {
+    const ref: MatDialogRef<DialogComponent> = this.dialog.open(
+      DialogComponent,
+      {
+        data: row,
+        backdropClass: 'confirmDialogComponent',
+        hasBackdrop: true,
+      }
+    );
   }
 
   public ngOnDestroy(): void {

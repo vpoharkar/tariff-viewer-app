@@ -1,10 +1,5 @@
-export type PaymentType = 'MONTHLY' | 'QUARTERLY' | 'ONE_TIME';
-
-export enum BonusType {
-  ONE_TIME = 1,
-  ROUTER_FREE = 2,
-  VIRTUAL_CASH = 3,
-}
+export type PaymentType = 'MONTHLY' | 'QUARTERLY' | 'ONE_TIME' | 'VARIED';
+export type BonusType = 'FIRST_5_MONTHS_FREE' | 'ROUTER_FREE' | 'VIRTUAL_CASH';
 
 export interface PaymentBonus {
   paymentType: PaymentType;

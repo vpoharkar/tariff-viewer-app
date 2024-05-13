@@ -28,8 +28,8 @@ $theme: mat.define-light-theme(
     width: auto;
   }
 
-  ::ng-deep {
-    .mdc-text-field {
+  :host ::ng-deep {
+    .custom-filter .mdc-text-field {
       padding: 0 !important;
       font-size: 12px !important;
     }
@@ -67,28 +67,33 @@ $theme: mat.define-light-theme(
   flex-direction: row;
 }
 
-.progress-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
+.tariff-table {
+  width: 100%;
+  overflow-x: auto;
 
-  .progress-text {
-    position: absolute;
-    padding: 10px;
+  .progress-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+
+    .progress-text {
+      position: absolute;
+      padding: 10px;
+      color: $app-white;
+    }
+  }
+
+  .check-success {
+    color: $app-green;
+  }
+
+  .check-unavailable {
+    color: mat.get-color-from-palette($warn, 300);
+  }
+
+  .to-tariff {
+    background-color: $app-orange;
     color: $app-white;
   }
-}
-
-.check-success {
-  color: $app-green;
-}
-
-.check-unavailable {
-  color: mat.get-color-from-palette($warn, 300);
-}
-
-.to-tariff {
-  background-color: $app-orange;
-  color: $app-white;
 }

@@ -48,9 +48,16 @@ The Application consists of two parts: **Internet comparison form** and **Tariff
 3. **Global Filter**: Filters all columns with specified value.
 4. **Custom Filter**: Following fields can be filtered  => `Name`,`Up Speed`, `Down Speed`, `Tariff Value`.
 5. On Smaller screens => handset-screen `benefits` columns is hidden. Will only be available on larger screens.
-6. On Smaller screens => handset-screen `Up Speed`, `Down Speed` columnare shown as numeric value. Whereas on larger screens they are shown as progress bar with `currentSpeed` and `maxSpeedLimitPerSelectedArea` values.
+6. On Smaller screens => handset-screen `Up Speed`, `Down Speed` columnare shown as numeric value. Whereas on larger screens they are shown as progress bar with `currentSpeed` and`maxSpeedLimitPerSelectedArea` values.
+7. On clicking `Go` button a dialog with current tariff selection is shown.
 > **Note**
 > Only exact match in filter renders data.
+
+## Future Scope
+
+1. Enable angular stanalone component everywhere to reuced unnecessay `@NgModule` => neakpeak in dialog components.
+2. Enable angular routing.
+3. Provide better calculation of tariff with `Bonuses Applied`
 
 ## Build
 

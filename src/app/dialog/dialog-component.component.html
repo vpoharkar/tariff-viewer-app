@@ -1,0 +1,77 @@
+<div *ngIf="dialogData">
+  <!-- <h1 mat-dialog-title>Are you sure?</h1> -->
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Tariff Selection Details</mat-card-title>
+      <mat-card-subtitle
+        >Tariff selected: {{ dialogData.name }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <div class="section-container">
+        <p class="header">Payment Type info</p>
+        <span class="text">Payment Type</span>
+        <span class="value"
+          ><strong>{{ dialogData.details.payment.paymentType }}</strong></span
+        >
+      </div>
+      <div>
+        <div
+          class="section-container"
+          *ngIf="dialogData.details.payment.paymentBonus.length > 0"
+        >
+          <p class="header">Bonuses applied</p>
+          <div *ngFor="let bonus of dialogData.details.payment.paymentBonus">
+            <span
+              *ngIf="
+                bonus.paymentType === dialogData.details.payment.paymentType
+              "
+              class="text"
+              >Bonus Type: {{ bonus.description }}</span
+            >
+            <span
+              *ngIf="
+                bonus.paymentType === dialogData.details.payment.paymentType
+              "
+              class="value"
+            >
+              <strong>{{ bonus.bonusType }}</strong></span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="section-container">
+        <p class="header">Final value</p>
+        <mat-divider></mat-divider>
+        <span class="text">Costs</span>
+        <span class="value"
+          ><strong>{{ getFinalPayment() }}</strong></span
+        >
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions align="end">
+        <button
+          mat-stroked-button
+          color="primary"
+          [mat-dialog-close]="{ clicked: 'Ok' }"
+        >
+          Ok
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          [mat-dialog-close]="{ clicked: 'Cancel' }"
+        >
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+
+  <!-- <div mat-dialog-actions style="float:right;margin:20px;">
+      
+    </div> -->
+</div>

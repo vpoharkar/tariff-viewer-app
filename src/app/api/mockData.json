@@ -53,7 +53,7 @@
                     ],
                     "details": {
                         "payment": {
-                            "paymentType": "MONTHLY",
+                            "paymentType": "ONE_TIME",
                             "monthlyTariff": 20.00,
                             "quarterlyTariff": 60.00,
                             "oneTimeTariff": 480.00,
@@ -81,7 +81,7 @@
                     ],
                     "details": {
                         "payment": {
-                            "paymentType": "MONTHLY",
+                            "paymentType": "ONE_TIME",
                             "monthlyTariff": 16.99,
                             "quarterlyTariff": 50.97,
                             "oneTimeTariff": 203.88,
@@ -109,17 +109,11 @@
                     ],
                     "details": {
                         "payment": {
-                            "paymentType": "MONTHLY",
+                            "paymentType": "VARIED",
                             "monthlyTariff": 14.99,
                             "quarterlyTariff": 44.97,
                             "oneTimeTariff": null,
-                            "paymentBonus": [
-                                {
-                                    "paymentType": "VARIED",
-                                    "bonusType": "VIRTUAL_CASH",
-                                    "description": "Free 200$ virtual cash"
-                                }
-                            ]
+                            "paymentBonus": []
                         },
                         "contractTerms": {
                             "manadatoryTenureInMonths": 0,

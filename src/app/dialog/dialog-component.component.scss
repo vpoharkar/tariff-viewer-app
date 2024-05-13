@@ -1,0 +1,21 @@
+.example-header-image {
+  background-image: url("../../assets/logoipsum-327.svg");
+  background-size: cover;
+}
+
+.card-content {
+  .section-container {
+    padding-bottom: 15px;
+    .header {
+      padding: 15px 0;
+      font-weight: bold;
+      color: orange;
+    }
+    .text {
+      float: left;
+    }
+    .value {
+      float: right;
+    }
+  }
+}
